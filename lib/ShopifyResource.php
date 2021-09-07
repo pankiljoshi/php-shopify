@@ -562,6 +562,10 @@ abstract class ShopifyResource
         if ($dataKey && isset($responseArray[$dataKey])) {
             return $responseArray[$dataKey];
         } else {
+            $responseArray['link_params'] = [
+                'next' => $this->getNextPageParams(),
+                'previous' => $this->getPrevPageParams()
+            ];
             return $responseArray;
         }
     }
